@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants</title>
+    <!-- Bootstrap CSS -->
+</head>
+<body>
+<header>
+    <!-- Header content: You can add a logo, navigation bar, etc. -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">Restaurant App</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class = "poravnanje">
+    <a (click)="logout()" class="navbar-brand">Izloguj se</a>
+    <a routerLink="/profil" class="navbar-brand">Profil</a>
+    <a routerLink="/promenaLozinke" class="navbar-brand">Promena lozinke</a>
+    <a routerLink="/zahtevi" routerLinkActive="active" class="navbar-brand">Zahtevi</a>
+    <a routerLink="/dodajKonobara" class="navbar-brand">Dodaj konobara</a>
+    <a routerLink="/dodajRestoran" class="navbar-brand">Dodaj restoran</a>
+    <a routerLink="/restoraniRadnoVreme" class="navbar-brand">Radno vreme</a>
+    </div>
+  </div>
+</nav>
+  <div class="center">
+  <div class = "centrirano">
+    <h2 style="text-align: center;">Zahtevi za registraciju novih gostiju</h2>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Adresa</th>
+        <th>E-mail</th>
+        <th>Kontakt telefon</th>
+        <th>Tip korisnika</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let zahtev of zahtevi">
+        <td>{{zahtev.ime}}</td>
+        <td>{{zahtev.prezime}}</td>
+        <td>{{zahtev.adresa}}</td>
+        <td>{{zahtev.mejl}}</td>
+        <td>{{zahtev.telefon}}</td>
+        <td><button class="dugme1" (click)="prihvati(zahtev)">Prihvati</button><button (click)="odbij(zahtev)">Odbij</button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+</main>
+
+<footer class="text-center text-lg-start bg-light text-muted">
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2024 Restaurant App
+    </div>
+</footer>
+</body>
+</html>

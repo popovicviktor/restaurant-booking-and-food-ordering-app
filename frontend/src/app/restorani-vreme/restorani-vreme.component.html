@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants</title>
+    <!-- Bootstrap CSS -->
+</head>
+<body>
+<header>
+    <!-- Header content: You can add a logo, navigation bar, etc. -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">Restaurant App</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class = "poravnanje">
+    <a (click)="logout()" class="navbar-brand">Izloguj se</a>
+    <a routerLink="/profil" class="navbar-brand">Profil</a>
+    <a routerLink="/promenaLozinke" class="navbar-brand">Promena lozinke</a>
+    <a routerLink="/zahtevi" class="navbar-brand">Zahtevi</a>
+    <a routerLink="/dodajKonobara" class="navbar-brand">Dodaj konobara</a>
+    <a routerLink="/dodajRestoran" class="navbar-brand">Dodaj restoran</a>
+    <a routerLink="/restoraniRadnoVreme" routerLinkActive="active" class="navbar-brand">Radno vreme</a>
+    </div>
+  </div>
+</nav>
+  <div class="center">
+    <div class = "centrirano" *ngIf="view==''">
+      <h2 style="text-align: center;">Svi restorani sistema:</h2>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Naziv</th>
+          <th>Ponedeljak</th>
+          <th>Utorak</th>
+          <th>Sreda</th>
+          <th>Četvrtak</th>
+          <th>Petak</th>
+          <th>Subota</th>
+          <th>Nedelja</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let restoran of restorani">
+          <td>{{restoran.naziv}}</td>
+          <td><span *ngIf="restoran.radno_vreme.length != 0 && restoran.radno_vreme[0].pocetak != ''">{{restoran.radno_vreme[0].pocetak}}-{{restoran.radno_vreme[0].kraj}}</span ><span *ngIf="restoran.radno_vreme.length == 0 || restoran.radno_vreme[0].pocetak == ''">Nedefinisano</span></td>
+          <td><span *ngIf="restoran.radno_vreme.length != 0 && restoran.radno_vreme[1].pocetak != ''">{{restoran.radno_vreme[1].pocetak}}-{{restoran.radno_vreme[1].kraj}}</span ><span *ngIf="restoran.radno_vreme.length == 0 || restoran.radno_vreme[1].pocetak == ''">Nedefinisano</span></td>
+          <td><span *ngIf="restoran.radno_vreme.length != 0 && restoran.radno_vreme[2].pocetak != ''">{{restoran.radno_vreme[2].pocetak}}-{{restoran.radno_vreme[2].kraj}}</span ><span *ngIf="restoran.radno_vreme.length == 0 || restoran.radno_vreme[2].pocetak == ''">Nedefinisano</span></td>
+          <td><span *ngIf="restoran.radno_vreme.length != 0 && restoran.radno_vreme[3].pocetak != ''">{{restoran.radno_vreme[3].pocetak}}-{{restoran.radno_vreme[3].kraj}}</span ><span *ngIf="restoran.radno_vreme.length == 0 || restoran.radno_vreme[3].pocetak == ''">Nedefinisano</span></td>
+          <td><span *ngIf="restoran.radno_vreme.length != 0 && restoran.radno_vreme[4].pocetak != ''">{{restoran.radno_vreme[4].pocetak}}-{{restoran.radno_vreme[4].kraj}}</span ><span *ngIf="restoran.radno_vreme.length == 0 || restoran.radno_vreme[4].pocetak == ''">Nedefinisano</span></td>
+          <td><span *ngIf="restoran.radno_vreme.length != 0 && restoran.radno_vreme[5].pocetak != ''">{{restoran.radno_vreme[5].pocetak}}-{{restoran.radno_vreme[5].kraj}}</span ><span *ngIf="restoran.radno_vreme.length == 0 || restoran.radno_vreme[5].pocetak == ''">Nedefinisano</span></td>
+          <td><span *ngIf="restoran.radno_vreme.length != 0 && restoran.radno_vreme[6].pocetak != ''">{{restoran.radno_vreme[6].pocetak}}-{{restoran.radno_vreme[6].kraj}}</span ><span *ngIf="restoran.radno_vreme.length == 0 || restoran.radno_vreme[6].pocetak == ''">Nedefinisano</span></td>
+          <td><button (click)="promeni(restoran)">Promeni</button></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class = "centrirano" *ngIf="view=='promeni'">
+      <h2 style="text-align: center;">Promena radnog vremena restorana: {{restoran.naziv}}</h2>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>{{restoran.naziv}}</th>
+          <th>Ponedeljak</th>
+          <th>Utorak</th>
+          <th>Sreda</th>
+          <th>Četvrtak</th>
+          <th>Petak</th>
+          <th>Subota</th>
+          <th>Nedelja</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Trenutno radno vreme:</td>
+          <td><span *ngIf="restoran.radno_vreme.length != 0 && restoran.radno_vreme[0].pocetak != ''">{{restoran.radno_vreme[0].pocetak}}-{{restoran.radno_vreme[0].kraj}}</span ><span *ngIf="restoran.radno_vreme.length == 0 || restoran.radno_vreme[0].pocetak == ''">Nedefinisano</span></td>
+          <td><span *ngIf="restoran.radno_vreme.length != 0 && restoran.radno_vreme[1].pocetak != ''">{{restoran.radno_vreme[1].pocetak}}-{{restoran.radno_vreme[1].kraj}}</span ><span *ngIf="restoran.radno_vreme.length == 0 || restoran.radno_vreme[1].pocetak == ''">Nedefinisano</span></td>
+          <td><span *ngIf="restoran.radno_vreme.length != 0 && restoran.radno_vreme[2].pocetak != ''">{{restoran.radno_vreme[2].pocetak}}-{{restoran.radno_vreme[2].kraj}}</span ><span *ngIf="restoran.radno_vreme.length == 0 || restoran.radno_vreme[2].pocetak == ''">Nedefinisano</span></td>
+          <td><span *ngIf="restoran.radno_vreme.length != 0 && restoran.radno_vreme[3].pocetak != ''">{{restoran.radno_vreme[3].pocetak}}-{{restoran.radno_vreme[3].kraj}}</span ><span *ngIf="restoran.radno_vreme.length == 0 || restoran.radno_vreme[3].pocetak == ''">Nedefinisano</span></td>
+          <td><span *ngIf="restoran.radno_vreme.length != 0 && restoran.radno_vreme[4].pocetak != ''">{{restoran.radno_vreme[4].pocetak}}-{{restoran.radno_vreme[4].kraj}}</span ><span *ngIf="restoran.radno_vreme.length == 0 || restoran.radno_vreme[4].pocetak == ''">Nedefinisano</span></td>
+          <td><span *ngIf="restoran.radno_vreme.length != 0 && restoran.radno_vreme[5].pocetak != ''">{{restoran.radno_vreme[5].pocetak}}-{{restoran.radno_vreme[5].kraj}}</span ><span *ngIf="restoran.radno_vreme.length == 0 || restoran.radno_vreme[5].pocetak == ''">Nedefinisano</span></td>
+          <td><span *ngIf="restoran.radno_vreme.length != 0 && restoran.radno_vreme[6].pocetak != ''">{{restoran.radno_vreme[6].pocetak}}-{{restoran.radno_vreme[6].kraj}}</span ><span *ngIf="restoran.radno_vreme.length == 0 || restoran.radno_vreme[6].pocetak == ''">Nedefinisano</span></td>
+        </tr>
+        <tr>
+          <td>Novo radno vreme:</td>
+          <td><input type="text" [(ngModel)]="vremena[0]"></td>
+          <td><input type="text" [(ngModel)]="vremena[1]"></td>
+          <td><input type="text" [(ngModel)]="vremena[2]"></td>
+          <td><input type="text" [(ngModel)]="vremena[3]"></td>
+          <td><input type="text" [(ngModel)]="vremena[4]"></td>
+          <td><input type="text" [(ngModel)]="vremena[5]"></td>
+          <td><input type="text" [(ngModel)]="vremena[6]"></td>
+          <td><button (click)="promeni1()">Promeni</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div><b>Radno vreme uneti u formatu hh:mm-hh:mm</b></div><br>
+    <div><b>Ukoliko neko polje ostavite prazno, radno vreme za taj dan se neće ažurirati</b></div>
+    <button (click)="changeView('')">Nazad</button>
+    </div>
+    </div>
+    </div>
+  </main>
+
+  <footer class="text-center text-lg-start bg-light text-muted">
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+          © 2024 Restaurant App
+      </div>
+  </footer>
+  </body>
+  </html>

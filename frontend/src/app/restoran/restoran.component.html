@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants</title>
+    <!-- Bootstrap CSS -->
+</head>
+<body>
+<header>
+    <!-- Header content: You can add a logo, navigation bar, etc. -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">Restaurant App</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="poravnanje">
+          <a (click)="logout()" class="navbar-brand">Izloguj se</a>
+          <a routerLink="/profil" class="navbar-brand">Profil</a>
+          <a routerLink="/promenaLozinke" class="navbar-brand">Promena lozinke</a>
+          <a routerLink="/restoran" routerLinkActive="active" class="navbar-brand">Restorani</a>
+          <a routerLink="/rezervacije" class="navbar-brand">Rezervacije</a>
+          <a routerLink="/dostavaHrane" class="navbar-brand">Dostava Hrane</a>
+        </div>
+      </div>
+    </nav>
+    <div>
+    <div class="center">
+      <table class="styled-table" *ngIf="zakazivanjeBool == false && menuBool == false">
+        <thead>
+          <tr>
+            <th>Ime</th>
+            <th>Adresa</th>
+            <th>Tip</th>
+            <th>Telefon</th>
+            <th>Komentari</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr >
+            <td>{{restoran.naziv}}</td>
+            <td>{{restoran.adresa}}</td>
+            <td>{{restoran.tip}}</td>
+            <td>{{restoran.telefon}}</td>
+            <td>
+              <div *ngFor="let rezervacija of restoran.rezervacije_istekle">
+                {{rezervacija.komentar}}
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        </table>
+        <div *ngIf="zakazivanjeBool == true">
+          Odaberi datum i vreme: <input type="datetime-local" [(ngModel)]="selectedDateTime" name="dateTimePicker">
+          Odaberi broj gostiju: <input type="number" [(ngModel)]="brojOsoba" name="brojOsoba">
+          Dodatni zahtevi:<input type="textarea" [(ngModel)]="zahtev" name="zahtev" placeholder="Unesite dodatne zahteve">
+          <button (click)="rezervisiSto()" class="dugme1">Potvrdi rezervaciju</button>
+        </div>
+        <div *ngIf="menuBool == true" class="centrirano">
+          <h2>Jelovnik</h2>
+          <table class="styled-table1">
+            <thead>
+              <tr>
+                <th>Naziv</th>
+                <th>Cena</th>
+                <th>Slika</th>
+                <th>Sastojci</th>
+                <th>Količina</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let jelo of restoran.jelovnik">
+                <td>{{jelo.naziv}}</td>
+                <td>{{jelo.cena}}</td>
+                <td><img [src]="jelo.slika" alt="slika" width="100" height="100"></td>
+                <td><div *ngFor="let sastojak of jelo.sastojci">
+                  {{sastojak}}
+                </div></td>
+                <td><input type="number" min="1" [(ngModel)]="kolicina[restoran.jelovnik.indexOf(jelo)]"></td>
+                <td><button (click)="dodajUKorpu(jelo, kolicina[restoran.jelovnik.indexOf(jelo)])">Dodaj u korpu</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="zakazivanjeBool==false && menuBool==false"><button class="dugme1" (click)="zakazivanje()">Rezerviši sto</button></div>
+        <div *ngIf="zakazivanjeBool==false && menuBool == false"><button class="dugme1" (click)="showMenu()">Meni</button></div>
+        <div *ngIf="menuBool" class="centrirano">
+          <h2>Korpa</h2>
+          <table class="styled-table1">
+            <thead>
+              <tr>
+                <th>Naziv</th>
+                <th>Cena</th>
+                <th>Količina</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let narudzbina of narudzbine.narudzbine">
+                <td>{{narudzbina.jelo.naziv}}</td>
+                <td>{{narudzbina.cena}}</td>
+                <td>{{narudzbina.kolicina}}</td>
+                <td><button class="dugme1" (click)="ukloni(narudzbina)">Ukloni</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="dugme1" (click)="naruci()">Naruči</button>
+        </div>
+        <button (click)="return()">Nazad</button>
+    </div>
+    </div>
+    </div>
+</main>
+
+<footer class="text-center text-lg-start bg-light text-muted">
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2024 Restaurant App
+    </div>
+</footer>
+</body>
+</html>
+

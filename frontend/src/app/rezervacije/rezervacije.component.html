@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants</title>
+    <!-- Bootstrap CSS -->
+</head>
+<body>
+<header>
+    <!-- Header content: You can add a logo, navigation bar, etc. -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">Restaurant App</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="poravnanje">
+          <a (click)="logout()" class="navbar-brand">Izloguj se</a>
+          <a routerLink="/profil" class="navbar-brand">Profil</a>
+          <a routerLink="/promenaLozinke" class="navbar-brand">Promena lozinke</a>
+          <a routerLink="/restorani" class="navbar-brand">Restorani</a>
+          <a routerLink="/rezervacije"  routerLinkActive="active" class="navbar-brand">Rezervacije</a>
+          <a routerLink="/dostavaHrane" class="navbar-brand">Dostava Hrane</a>
+        </div>
+      </div>
+    </nav>
+    <div>
+    <div class="center">
+      <button *ngIf="view == ''" class="dugme1" (click)="changeView('aktuelne')">Aktuelne rezervacije</button>
+      <button *ngIf="view == ''" class="dugme" (click)="changeView('arhiva')">Arhiva rezervacija</button>
+      <div class = "centrirano" *ngIf=" view == 'aktuelne' ">
+      <h2>Aktuelne rezervacije</h2>
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Datum</th>
+            <th>Restoran</th>
+            <th>Adresa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rezervacija  of rezervacije">
+            <td *ngIf="rezervacija.status == 'Odobreno' ">{{getDatum(rezervacija.pocetak)}}</td>
+            <td *ngIf="rezervacija.status == 'Odobreno' ">{{rezervacija.restoran}}</td>
+            <td *ngIf="rezervacija.status == 'Odobreno' ">{{getAdresa(rezervacija.restoran)}}</td>
+            <div *ngIf="rezervacija.status == 'Odobreno' && otkazNaVreme(rezervacija)"><button class="dugme1" (click)="otkazi(rezervacija)">Otkaži</button></div>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+      <div class = "centrirano" *ngIf="view == 'arhiva'">
+        <h2>Arhiva rezervacija</h2>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Datum</th>
+              <th>Restoran</th>
+              <th>Moj komentar ili razlog odbijanja</th>
+              <th>Ocena</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rezervacija  of rezervacijeArhiva">
+              <td>{{getDatumVreme(rezervacija.pocetak)}}</td>
+              <td>{{rezervacija.restoran}}</td>
+              <td>{{rezervacija.komentar}}</td>
+              <td>{{rezervacija.ocena}}</td>
+              <td>{{rezervacija.status}}</td>
+              <td *ngIf="rezervacija.ocena == 0 && rezervacija.komentar == '' && rezervacija.status == 'Izvrseno' "><button (click)="oceni(rezervacija)">Oceni kvalitet</button></td>
+            </tr>
+          </tbody>
+          </table>
+        </div>
+        <div class = "centrirano" *ngIf="view == 'oceni'">
+          <h2>Oceni kvalitet</h2>
+          <div class="rating" (change)="oceniRezervaciju($event)">
+            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Odlično">&#9733;</label>
+            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Vrlo dobro">&#9733;</label>
+            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Dobro">&#9733;</label>
+            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Loše">&#9733;</label>
+            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Vrlo loše">&#9733;</label>
+          </div>
+          Komentar: <input type="textbox" [(ngModel)]="this.rezervacija.komentar"><br/>
+          <button (click)="posaljiOcenu()">Pošalji</button>
+        </div>
+        <button class="dugme" *ngIf="view != '' && view != 'oceni'" (click)="changeView('')">Nazad</button>
+        <button class="dugme" *ngIf="view == 'oceni'" (click)="changeView('arhiva')">Nazad</button>
+    </div>
+    </div>
+    </div>
+</main>
+
+<footer class="text-center text-lg-start bg-light text-muted">
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2024 Restaurant App
+    </div>
+</footer>
+</body>
+</html>
+

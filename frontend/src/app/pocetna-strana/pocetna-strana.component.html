@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants</title>
+    <!-- Bootstrap CSS -->
+</head>
+<body>
+<header>
+    <!-- Header content: You can add a logo, navigation bar, etc. -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">Restaurant App</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class = "poravnanje">
+      <a routerLink="/" routerLinkActive="active" class="navbar-brand">Početak</a>
+          <a routerLink="/login" class="navbar-brand">Uloguj se</a>
+          <a routerLink="/register" class="navbar-brand">Registruj se</a>
+    </div>
+  </div>
+</nav>
+  <div class="center">
+    <h2 style="text-align: center;">Ukupan broj restorana: {{restorani.length}}</h2>
+    <h2 style="text-align: center;">Ukupan broj gostiju: {{gosti.length}}</h2>
+    <h2 style="text-align: center;">Rezervacije u poslednjih 24 sata: {{rezervacije24h.length}}</h2>
+    <h2 style="text-align: center;">Rezervacije u poslednjih 7 dana: {{rezervacije7dana.length}}</h2>
+    <h2 style="text-align: center;">Rezervacije u poslednjih 30 dana: {{rezervacije30dana.length}}</h2>
+    <h2></h2>
+    <h2 style="text-align: center;">Svi restorani sistema</h2>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Naziv</th>
+          <th>Adresa</th>
+          <th>Tip</th>
+          <th>Konobari</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="!searchDone">
+        <tr>
+          <td><button class = "dugme1" (click)="sortNameRastuce()">Sortiraj rastuce</button><button (click)="sortNameOpadajuce()">Sortiraj opadajuce</button></td>
+          <td><button class = "dugme1" (click)="sortAdresaRastuce()">Sortiraj rastuce</button><button (click)="sortAdresaOpadajuce()">Sortiraj opadajuce</button></td>
+          <td><button class = "dugme1" (click)="sortTipRastuce()">Sortiraj rastuce</button><button (click)="sortTipOpadajuce( )">Sortiraj opadajuce</button></td>
+          <td></td>
+        </tr>
+        <tr *ngFor="let restoran of restorani">
+          <td>{{restoran.naziv}}</td>
+          <td>{{restoran.adresa}}</td>
+          <td>{{restoran.tip}}</td>
+          <td>
+            <div *ngFor="let konobar of restoran.konobari">
+              <div *ngFor="let user of users">
+                <div *ngIf="user.korisnicko_ime == konobar">{{user.ime}} {{user.prezime}}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="searchDone">
+        <tr *ngFor="let restoran of searcResult">
+          <td>{{restoran.naziv}}</td>
+          <td>{{restoran.adresa}}</td>
+          <td>{{restoran.tip}}</td>
+          <td>
+            <div *ngFor="let konobar of restoran.konobari">
+              <div *ngFor="let user of users">
+                <div *ngIf="user.korisnicko_ime == konobar">{{user.ime}} {{user.prezime}}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button *ngIf="!search && !searchDone" (click)="setsearch()">Pretraži restorane</button>
+      <div *ngIf="search && !searchDone">
+        <input type="text" [(ngModel)]="searchName" placeholder="naziv">
+        <input type="text" [(ngModel)]="searchAddress" placeholder="adresa">
+        <input type="text" [(ngModel)]="searchType" placeholder="tip">
+        <button (click)="searchRestaurants()">Pretraži</button>
+        </div>
+        <button *ngIf="searchDone" (click)="reload()">Nazad</button>
+  </div>
+  </div>
+</main>
+
+<footer class="text-center text-lg-start bg-light text-muted">
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2024 Restaurant App
+    </div>
+</footer>
+</body>
+</html>

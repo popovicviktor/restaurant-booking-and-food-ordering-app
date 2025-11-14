@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants</title>
+    <!-- Bootstrap CSS -->
+</head>
+<body>
+<header>
+    <!-- Header content: You can add a logo, navigation bar, etc. -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">Restaurant App</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="poravnanje">
+          <a routerLink="/" class="navbar-brand">Početak</a>
+          <a routerLink="/login" routerLinkActive="active" class="navbar-brand">Uloguj se</a>
+          <a routerLink="/register" class="navbar-brand">Registruj se</a>
+        </div>
+      </div>
+    </nav>
+    <div>
+    <div class="center">
+      <div *ngIf="componentToDisplay == 'login'" class="login-container">
+        Korisničko ime: <input type="text" [(ngModel)]="username"><br/>
+        Lozinka: <input type="password" [(ngModel)]="password"><br/>
+        <button (click)="login()">Uloguj se</button>
+  <div class="center-link">
+    <a href="javascript:void(0);" (click)="changeDisplay('zaboravljenaLozinka')">Zaboravljena lozinka?</a>
+  </div>
+</div>
+      <div *ngIf="componentToDisplay=='zaboravljenaLozinka'">
+        <input type="text" [(ngModel)]="username" placeholder="unesite svoje korisničko ime"><br/>
+        <button (click)="confirmUsername()">Potvrdi korisničko ime</button>
+        <div class="center-link">
+        <a href="javascript:void(0);" (click)="changeDisplay('login')">Nazad</a>
+      </div>
+      </div>
+      <div *ngIf="componentToDisplay=='securityQuestion'">
+        {{user.pitanje}}<br/>
+        <input type="text" [(ngModel)]="answer" placeholder="unesite odgovor"><br/>
+        <button (click)="confirmAnswer()">Potvrdi</button>
+        <div class="center-link">
+        <a href="javascript:void(0);" (click)="changeDisplay('login')">Nazad</a>
+      </div>
+      </div>
+      <div *ngIf="componentToDisplay=='changePassword'">
+        Nova lozinka: <input type="password" [(ngModel)]="password"><br/>
+        Ponovljena nova lozinka: <input type="password" [(ngModel)]="passwordConfirm"><br/>
+        <button (click)="changePassword()">Promeni lozinku</button>
+        <div class="center-link">
+        <a href="javascript:void(0);" (click)="changeDisplay('login')">Nazad</a>
+      </div>
+      </div>
+    </div>
+    </div>
+    </div>
+</main>
+
+<footer class="text-center text-lg-start bg-light text-muted">
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2024 Restaurant App
+    </div>
+</footer>
+</body>
+</html>

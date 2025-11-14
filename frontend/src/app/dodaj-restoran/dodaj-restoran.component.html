@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants</title>
+    <!-- Bootstrap CSS -->
+</head>
+<body>
+<header>
+    <!-- Header content: You can add a logo, navigation bar, etc. -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">Restaurant App</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class = "poravnanje">
+    <a (click)="logout()" class="navbar-brand">Izloguj se</a>
+    <a routerLink="/profil" class="navbar-brand">Profil</a>
+    <a routerLink="/promenaLozinke" class="navbar-brand">Promena lozinke</a>
+    <a routerLink="/zahtevi" class="navbar-brand">Zahtevi</a>
+    <a routerLink="/dodajKonobara" class="navbar-brand">Dodaj konobara</a>
+    <a routerLink="/dodajRestoran" routerLinkActive="active" class="navbar-brand">Dodaj restoran</a>
+    <a routerLink="/restoraniRadnoVreme" class="navbar-brand">Radno vreme</a>
+    </div>
+  </div>
+</nav>
+  <div class="center">
+    Naziv: <input type="text" [(ngModel)]="restoran.naziv"><br/>
+    Adresa: <input type="text" [(ngModel)]="restoran.adresa"><br/>
+    Tip: <input type="text" [(ngModel)]="restoran.tip"><br/>
+    Opis: <input type="textbox" [(ngModel)]="restoran.opis"><br/>
+    Kontakt telefon: <input type="text" [(ngModel)]="restoran.telefon"><br/>
+    Unesi raspored stolova: <input type="file" (change)="ucitajJSON($event)"><br>
+    <button (click)="dodajRestoran()">Dodaj restoran</button>
+    </div>
+    </div>
+  </main>
+
+  <footer class="text-center text-lg-start bg-light text-muted">
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+          © 2024 Restaurant App
+      </div>
+  </footer>
+  </body>
+  </html>

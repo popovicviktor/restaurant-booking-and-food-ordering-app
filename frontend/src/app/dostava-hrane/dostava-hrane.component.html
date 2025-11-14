@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants</title>
+    <!-- Bootstrap CSS -->
+</head>
+<body>
+<header>
+    <!-- Header content: You can add a logo, navigation bar, etc. -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">Restaurant App</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="poravnanje">
+          <a (click)="logout()" class="navbar-brand">Izloguj se</a>
+          <a routerLink="/profil" class="navbar-brand">Profil</a>
+          <a routerLink="/promenaLozinke" class="navbar-brand">Promena lozinke</a>
+          <a routerLink="/restorani" class="navbar-brand">Restorani</a>
+          <a routerLink="/rezervacije"  class="navbar-brand">Rezervacije</a>
+          <a routerLink="/dostavaHrane" routerLinkActive="active" class="navbar-brand">Dostava Hrane</a>
+        </div>
+      </div>
+    </nav>
+    <div>
+    <div class="center">
+      <button *ngIf="view == ''" class="dugme1" (click)="changeView('aktuelne')">Aktuelne dostave</button>
+      <button *ngIf="view == ''" class="dugme" (click)="changeView('arhiva')">Arhiva dostava</button>
+      <div class = "centrirano" *ngIf=" view == 'aktuelne' ">
+      <h2>Aktuelne narudzbine</h2>
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Datum</th>
+            <th>Vreme</th>
+            <th>Restoran</th>
+            <th>Status</th>
+            <th>Vreme dostave(minuti)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dostava  of dostave">
+            <td *ngIf="dostava.status == 'zahtev' || dostava.status == 'prihvaceno'">{{getDatumVreme(dostava.datum)}}</td>
+            <td *ngIf="dostava.status == 'zahtev' || dostava.status == 'prihvaceno'">{{getVreme(dostava.datum)}}</td>
+            <td *ngIf="dostava.status == 'zahtev' || dostava.status == 'prihvaceno'">{{dostava.restoran}}</td>
+            <td *ngIf="dostava.status == 'zahtev' || dostava.status == 'prihvaceno'" >{{dostava.status}}</td>
+            <td *ngIf="dostava.status == 'zahtev' || dostava.status == 'prihvaceno'">{{dostava.vreme}}</td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+      <div class = "centrirano" *ngIf="view == 'arhiva'">
+        <h2>Arhiva dostava</h2>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Datum</th>
+              <th>Iznos računa</th>
+              <th>Restoran</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dostava of dostave">
+              <td *ngIf="dostava.status == 'dostavljeno' || dostava.status == 'odbijeno' ">{{getDatumVreme(dostava.datum)}}</td>
+              <td *ngIf="dostava.status == 'dostavljeno' || dostava.status == 'odbijeno' ">{{dostava.ukupna_cena}}</td>
+              <td *ngIf="dostava.status == 'dostavljeno' || dostava.status == 'odbijeno' ">{{dostava.restoran}}</td>
+              <td *ngIf="dostava.status == 'dostavljeno' || dostava.status == 'odbijeno' ">{{dostava.status}}</td>
+            </tr>
+          </tbody>
+          </table>
+        </div>
+        <button class="dugme" *ngIf="view != ''" (click)="changeView('')">Nazad</button>
+    </div>
+    </div>
+    </div>
+</main>
+
+<footer class="text-center text-lg-start bg-light text-muted">
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2024 Restaurant App
+    </div>
+</footer>
+</body>
+</html>

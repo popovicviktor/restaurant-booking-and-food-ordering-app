@@ -1,0 +1,44 @@
+[{ 
+	"stolovi": [
+	{"id": 1,
+	"kapacitet": 4,
+	"x": 250,
+	"y": 50,
+	"radius": 30
+	},
+	{"id": 2,
+	"kapacitet": 4,
+	"x": 400,
+	"y": 50,
+	"radius": 30
+	},
+	{"id": 3,
+	"kapacitet": 4,
+	"x": 100,
+	"y": 150,
+	"radius": 30
+	},
+	{"id": 4,
+	"kapacitet": 4,
+	"x": 100,
+	"y": 50,
+	"radius": 30
+	}
+	],
+	"kuhinje": [
+	{"id": 1,
+	"x": 50,
+	"y": 240,
+	"width": 100,
+	"height": 50
+	}
+	],
+	"toaleti": [
+	{"id": 1,
+	"x": 400,
+	"y": 240,
+	"width": 50,
+	"height": 50
+	}
+	]
+}]

@@ -1,0 +1,90 @@
+[{
+  "_id": {
+    "$oid": "66888445da730fc78591453f"
+  },
+  "korisnicko_ime": "admin",
+  "lozinka": "9gYzViFloYtEt9N/m5AH+A==",
+  "ime": "Milan",
+  "prezime": "Borjan",
+  "pol": "M",
+  "adresa": "Knez Mihajlova 1",
+  "telefon": "0642223331",
+  "mejl": "admin@gmail.com",
+  "pitanje": "Ko pravi najbolje palačinke na svetu?",
+  "odgovor": "majka Stana",
+  "broj_kartice": "",
+  "tip": "admin",
+  "fotografija": "uploads\\1720223353453-Borjan.png"
+},
+{
+  "_id": {
+    "$oid": "66889179f35acff7332d9043"
+  },
+  "korisnicko_ime": "pera",
+  "lozinka": "q/ioSAD5r3rDAd2mXqvSng==",
+  "ime": "Petar",
+  "prezime": "Petrovic Njegos",
+  "pol": "M",
+  "adresa": "Cetinje 45",
+  "telefon": "064-045-9900",
+  "mejl": "petarkralj@gmail.com",
+  "pitanje": "Kakva je vocka tvrd orah?",
+  "odgovor": "cudnovata",
+  "broj_kartice": "1267-6643-2145-5781",
+  "tip": "gost",
+  "fotografija": "uploads\\1720233471640-Petar_II_Petrovic-Njegos.png"
+},
+{
+  "_id": {
+    "$oid": "66889ab42479bf8851a25c98"
+  },
+  "korisnicko_ime": "SlavoMus",
+  "lozinka": "o/6yIHKCctWOfjJ100LrdQ==",
+  "ime": "Slavoljub",
+  "prezime": "Muslin",
+  "pol": "M",
+  "adresa": "Ustanicka 43",
+  "telefon": "064-459-9947",
+  "mejl": "slavoljubkralj@gmail.com",
+  "pitanje": "Ko je najgori fudbaler na svetu?",
+  "odgovor": "Sergej Milinkovic Savic",
+  "broj_kartice": "",
+  "tip": "konobar",
+  "fotografija": "uploads\\1720228532028-muslin-1024x1024.png"
+},
+{
+  "_id": {
+    "$oid": "6688b201a0c1f69cc814d05e"
+  },
+  "korisnicko_ime": "Leo",
+  "lozinka": "Cit9sWEdJ+0SSHMXGK/quw==",
+  "ime": "Lionel",
+  "prezime": "Messi",
+  "pol": "M",
+  "adresa": "Miami 87",
+  "telefon": "067-223-4569",
+  "mejl": "leomessi@gmail.com",
+  "pitanje": "Ko je najbolji fudbaler na svetu?",
+  "odgovor": "Jokic",
+  "broj_kartice": "5644-2131-7032-6891",
+  "tip": "gost",
+  "fotografija": "uploads\\1720234497002-lionel-messi-celebrates-after-their-sides-third-goal-by-news-photo-1686170172.png"
+},
+{
+  "_id": {
+    "$oid": "6688b398a0c1f69cc814d088"
+  },
+  "korisnicko_ime": "DonDiego",
+  "lozinka": "chqIEHtJbku+J/87hk8H9w==",
+  "ime": "Diego",
+  "prezime": "Godin",
+  "pol": "M",
+  "adresa": "Montevideo 57",
+  "telefon": "063-534-1249",
+  "mejl": "dondiego@gmail.com",
+  "pitanje": "Ko je igrao za Atletiko?",
+  "odgovor": "Diego Godin",
+  "broj_kartice": "",
+  "tip": "konobar",
+  "fotografija": "uploads\\1720280598808-DonDiego.png"
+}]

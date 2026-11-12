@@ -27,9 +27,11 @@ The project is built with the MEAN stack.
 
 ## Login and registration
 
-Guests and waiters log in on the public login page, while the administrator has a separate login page that is not available from the public pages. Only guests can register, waiters are added by the administrator.
+Guests and waiters log in on the public login page, while the administrator has a separate login page that is not accessible from the public pages. 
+Only guests can register, waiters are added by the administrator.
 
-A new guest registers with personal data, a security question and answer, an optional profile picture (JPG or PNG) and a credit card number. The username and email have to be unique, and the password must have 6 to 10 characters, start with a letter and contain at least one uppercase letter, three lowercase letters, one number and one special character. Passwords are stored encrypted.
+A new guest registers with personal data, a security question and answer, an optional profile picture and a credit card number. The username and email have to be unique, and the password has to meet certain complexity rules.
+Passwords are stored encrypted.
 
 Registration creates a registration request, and the guest can't log in until the administrator accepts it.
 
@@ -45,7 +47,8 @@ The landing page is open to everyone, even without logging in. It shows:
 - the number of reservations in the last 24 hours, 7 days and 30 days
 - a list of restaurants together with the list of their waiters
 
-The list of restaurants can be sorted by name, address and type (both ascending and descending), and searched by name, address and type. Any combination of these fields can be used. Visitors can also access the login and registration pages from here.
+The list of restaurants can be sorted and searched.
+Visitors can also access the login and registration pages from this page.
 
 ---
 

@@ -93,7 +93,9 @@ The guest can check and update their data and profile picture.
 
 ## Waiter
 
-Every waiter is assigned to exactly one restaurant. After logging in, the waiter sees a main menu with four pages: Profile, Reservations, Deliveries and Statistics.
+Every waiter is assigned to exactly one restaurant. 
+
+After logging in, the waiter sees a main menu with four pages: Profile, Reservations, Deliveries and Statistics.
 
 ### Profile
 

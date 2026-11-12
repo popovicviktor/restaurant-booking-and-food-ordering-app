@@ -32,6 +32,7 @@ Guests and waiters log in on the public login page, while the administrator has 
 Only guests can register, waiters are added by the administrator.
 
 A new guest registers with personal data, a security question and answer, an optional profile picture and a credit card number. The username and email have to be unique, and the password has to meet certain complexity rules.
+
 Passwords are stored encrypted.
 
 Registration creates a registration request, and the guest can't log in until the administrator accepts it.

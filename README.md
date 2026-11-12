@@ -119,9 +119,9 @@ The waiter can check and update their data and profile picture.
 ### Statistics
 
 **Displayed:**
-- Diagram of reservations per day of the week handled by the waiter.
-- Diagram of reservations handled by each waiter of the restaurant.
-- Diagram of distribution of the waiter's reservations over the last 24 months by day of the week.
+- Bar chart of guests handled by the waiter, per day of the week.
+- Pie chart of reservations handled by each waiter of the restaurant.
+- Histogram of the waiter's reservations over the last 24 months by day of the week.
 
 ---
 

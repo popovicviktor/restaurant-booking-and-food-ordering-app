@@ -8,23 +8,28 @@ The app has three types of users: **guests**, **waiters** and **administrators**
 
 ## Tech stack
 
-The project is built with the MEAN stack:
+The project is built with the MEAN stack.
 
-- MongoDB for the database
-- Express and Node.js for the server
-- Angular for the client
+**Client side**
+- Angular
 - Bootstrap for the layout and responsive design
 - Chart.js for the waiter statistics diagrams
+
+**Server side**
+- Node.js and Express
 - crypto-js for password encryption
 - multer for uploading profile pictures
+
+**Database**
+- MongoDB
 
 ---
 
 ## Login and registration
 
-Guests and waiters log in on the public login page, while the administrator has a separate login page that is not available from the public pages. If the username or password is wrong, an error message is displayed.
+Guests and waiters log in on the public login page, while the administrator has a separate login page that is not linked from the public pages. If the username or password is wrong, an error message is displayed.
 
-A new guest registers with a username, password, security question and answer, name, surname, gender, address, phone number, email, profile picture and credit card number. The profile picture is a JPG or PNG file between 100x100 and 300x300 px, and a default picture is used if none is uploaded. The data is checked in the browser, in JavaScript, before it is sent to the server. The username and email have to be unique, and the password must have 6 to 10 characters, start with a letter and contain at least one uppercase letter, three lowercase letters, one number and one special character. Passwords are stored encrypted.
+A new guest registers with a username, password, security question and answer, name, surname, gender, address, phone number, email, profile picture and credit card number. The profile picture is a JPG or PNG file, and a default picture is used if none is uploaded. The data is checked on the client side before it is sent to the server. The username and email have to be unique, and the password must have 6 to 10 characters, start with a letter and contain at least one uppercase letter, three lowercase letters, one number and one special character. Passwords are stored encrypted.
 
 Registration creates a **registration request**, not an active account. The guest can't log in until the administrator accepts the request. If the administrator rejects it, the account is never created.
 
@@ -40,17 +45,17 @@ The landing page is open to everyone, even without logging in. It shows:
 - the number of reservations in the last 24 hours, 7 days and 30 days
 - a list of restaurants together with the names of their waiters
 
-The list can be sorted by name, address and type (both ascending and descending), and searched by name, address and/or type. Not all search fields have to be filled in. Visitors can also go to the login and registration pages from here.
+The list can be sorted by name, address and type (both ascending and descending), and searched by name, address and type. Any combination of these fields can be used. Visitors can also go to the login and registration pages from here.
 
 ---
 
 ## Guest
 
-After logging in, the guest gets a main menu with four pages: Profile, Restaurants, Reservations and Food delivery.
+After logging in, the guest sees a main menu with four pages: Profile, Restaurants, Reservations and Food delivery.
 
 ### Profile
 
-This is the first page the guest sees after logging in. Here they can check and update their data and profile picture.
+The guest can check and update their data and profile picture.
 
 ### Restaurants
 
@@ -83,11 +88,11 @@ This is the first page the guest sees after logging in. Here they can check and 
 
 ## Waiter
 
-Every waiter is assigned to exactly one restaurant. After logging in, they get a main menu with four pages: Profile, Reservations, Deliveries and Statistics.
+Every waiter is assigned to exactly one restaurant. After logging in, they see a main menu with four pages: Profile, Reservations, Deliveries and Statistics.
 
 ### Profile
 
-This is the first page the waiter sees after logging in. Here they can check and update their data and profile picture.
+The waiter can check and update their data and profile picture.
 
 ### Reservations
 
@@ -107,7 +112,7 @@ This is the first page the waiter sees after logging in. Here they can check and
 - The current orders.
 
 **Actions:**
-- Confirm or reject each order. When confirming, waiter chooses the estimated delivery time (20-30, 30-40 or 50-60 minutes).
+- Confirm or reject each order. When confirming, they choose the estimated delivery time (20-30, 30-40 or 50-60 minutes).
 - Mark a confirmed delivery as finished.
 
 ### Statistics

@@ -1,4 +1,4 @@
-# Restaurant Reservation and Food Ordering App
+# Restaurant Booking and Food Ordering App
 
 A web application for booking tables in restaurants and ordering food for delivery. It was made as a project for the course **Internet Application Programming** at the School of Electrical Engineering, University of Belgrade (academic year 2023/24).
 

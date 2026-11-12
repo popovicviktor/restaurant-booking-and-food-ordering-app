@@ -74,8 +74,8 @@ The guest can check and update their data and profile picture.
 ### Reservations
 
 **Displayed:**
-- A table with current reservations.
-- A table with past reservations.
+- A list of current reservations.
+- A list of past reservations.
 
 **Actions:**
 - Cancel a current reservation up to 45 minutes before it starts.
@@ -105,7 +105,7 @@ The waiter can check and update their data and profile picture.
 **Actions:**
 - Confirm a reservation by assigning a table to it, or reject it with an explanation.
 - Half an hour after a reservation ends, mark whether the guests showed up. A guest who doesn't show up 3 times is blocked from making new reservations, and only the administrator can unblock them.
-- Extend the reservation of table for one more hour, but only once per reservation.
+- Extend the reservation of a table for one more hour, but only once per reservation.
 
 ### Deliveries
 
